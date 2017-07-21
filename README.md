@@ -45,7 +45,7 @@ https://gist.github.com/jbaylina/2cdf93d94ad1034e562ccc1d40bc64ea
 
 Sample of multisig_rescue_tokens_jordi.csv  https://gist.github.com/jbaylina/9daaef61f604b08d0e2c24bf5b16ec2a 
 
-The operation is assumed to have started at block 4044813 and ended at 4046151 (Please verify).
+The operation is assumed to have started at block 4041168 and ended at 4046151 (Please verify).
 
 
 
