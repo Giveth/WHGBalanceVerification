@@ -32,7 +32,7 @@ Sorted by `oldWallet`; `[owners]` should be a string but formatted as a javascri
 
 
 
-## newWallets.csv (to be generated after deployment to Main Net)
+## `newWallets.csv` (to be generated after deployment to Main Net)
 
 Upon verifying `multisig_rescue_oldwallets_jordi.csv`, and confirming the code for the new multisig contracts with Parity, we will deploy the new wallets and create `newWallets.csv` with 
 
@@ -44,7 +44,7 @@ This will also need to be verified by the community.
 
 
 
-## multisig_rescue_ether_jordi.csv
+## `multisig_rescue_ether_jordi.csv`
 
 This file lists the tokens that are assumed to have been rescued from each wallet, specifically listing: 
 
@@ -54,7 +54,7 @@ Sorted by `wallet` with `amount == 0` omitted; `amount` and `cumulativeAmount` a
 
 
 
-## multisig_rescue_tokens_jordi.csv  
+## `multisig_rescue_tokens_jordi.csv`  
 
 This file lists the tokens that are assumed to have been rescued from each wallet, specifically listing: 
 
