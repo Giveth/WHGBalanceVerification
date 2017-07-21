@@ -1,56 +1,74 @@
 # WHGBalanceVerification
-White Hat Group Verification Draft
 
-# Accounting of Multisig Clearing
+White Hat Group Deployment Strategy and Data Verification Document
 
-On the 19th of July the White Hat Group rescued various multisig contracts that had vulnerable bytecode. We plan to redeploy new multisig contracts with this vulnerability removed. These new multisig contracts will have new addresses, but otherwise maintain their original state (owners, m_required, m_dailyLimit, ether and token balances). 
 
-We aim  to do this as safely as possible and as quickly as possible. Therefore, we are submitting 3 csv files (`oldWallets.csv`, `multisig_rescue_ether.csv`, and multisig_rescue_tokens.csv) and  1 set of bytecode (`newWalletBytecode.txt`) that we will use to achieve this task. 
 
-When we are satisfied with the security & accuracy of `oldWallets.csv` and `newWalletBytecode.txt`, and about 24 hours has passed with no changes to these two files, we will deploy the replacement multisig wallets and generate the `newWallets.csv` file linking the old vulnerable wallet addresses to the new replacement wallet addresses for community review. After an additional  24 hours of no changes to this file, we will send all of the tokens and ether to the newly generated wallets.
-## multisig_rescue_oldwallets_jordi.csv and newWallets.csv
-This file contains a list of each wallet that was emptied by the following accounts: 
-0x1dba1131000664b884a1ba238464159892252d3a
+# Strategy  
 
-`Old Wallet, "[owners]", required, day_limit`
+On the 19th of July the White Hat Group rescued various multisig contracts deployed with vulnerable bytecode. We plan to deploy new multisig contracts with this vulnerability removed. These new multisig contracts will have new addresses, but otherwise maintain the expected constructor parameters (`[_owners]`, `_required`, `_dayLimit`) and the appropriate ether and token balances. 
 
-This file should be sorted by `Old Wallet`.
-`[owners]` should be a string but formatted as a javascript array.
+We aim to do this as safely as possible and as quickly as possible. Therefore, we are submitting the 3 csv files (`oldWallets.csv`, `multisig_rescue_ether.csv`, and `multisig_rescue_tokens.csv`) that contain the data needed to achieve this task for community review. These files will be used directly for the deployment of the new multisig contracts and the transactions that will fill them.
 
-Upon verifying this data, and verifying the bytecode for the upgraded multisig contracts, we will generate all of the new wallets and create a .csv file with 
+This deployment will be simulated on the Test Net tonight (July 21st).
 
-`oldWallet, newWallet`
+When we are satisfied with the security & accuracy of `oldWallets.csv`and our deployment scripts, and the chosen multisig wallet implementation has been approved by Parity, we will deploy the replacement multisig wallets to the Main Net and generate the `newWallets.csv` file linking the old vulnerable wallet addresses to the new replacement wallet addresses for community review before sending all of the tokens and ether to the newly generated wallets.
+
+
+
+#The Contents of ~/jbaylina
+
+Please follow the formatting outlined below for your own audits.
+
+
+
+## `multisig_rescue_oldwallets_jordi.csv` 
+
+This file describes each wallet that was attempted to be rescued by `0x1dba1131000664b884a1ba238464159892252d3a`specifically listing:
+
+`oldWallet`, `[owners]`, `required`, `day_limit`
+
+Sorted by `oldWallet`; `[owners]` should be a string but formatted as a javascript array.
+
+
+
+## newWallets.csv (to be generated after deployment to Main Net)
+
+Upon verifying `multisig_rescue_oldwallets_jordi.csv`, and confirming the code for the new multisig contracts with Parity, we will deploy the new wallets and create `newWallets.csv` with 
+
+`oldWallet`, `newWallet`
+
+Sorted by ‘oldWallet’
 
 This will also need to be verified by the community. 
-https://gist.github.com/jbaylina/3c6db1c092cb23893ad5a4414eb628d5 
-## multisig_rescue_ether.csv
 
-`wallet, amount, cumulativeAmount`
 
-Sorted by amount and then the wallet with the 0 amounts omitted.
-## multisig_rescue_tokens.csv  
+
+## multisig_rescue_ether_jordi.csv
+
+This file lists the tokens that are assumed to have been rescued from each wallet, specifically listing: 
+
+`wallet`, `amount`, `cumulativeAmount`
+
+Sorted by `wallet` with `amount == 0` omitted; `amount` and `cumulativeAmount` are listed in wei.
+
+
+
+## multisig_rescue_tokens_jordi.csv  
+
+This file lists the tokens that are assumed to have been rescued from each wallet, specifically listing: 
 
 `tokenAddress, tokenSymbol, wallet, amount, cumulativeAmount`
 
-Sorted by token address (all characters should be lowercase) and then the wallet with the 0 amounts omitted.
+Sorted by `tokenAddress` (all characters should be lowercase) and then by `wallet` with `amount == 0` omitted; `amount` and `cumulativeAmount` are listed in the lowest unit of the token.
 
 
 
-## Helping
+# Helping
 
-We are happy to compare against any version of the accounting.
+We are excited to compare our results against yours.
 
-Please create a new folder for each implementation. Sample list of multisig_rescue_ether_jordi.csv can be found 
-https://gist.github.com/jbaylina/2cdf93d94ad1034e562ccc1d40bc64ea
-
-Sample of multisig_rescue_tokens_jordi.csv  https://gist.github.com/jbaylina/9daaef61f604b08d0e2c24bf5b16ec2a 
+Please create a new folder for each implementation. 
 
 The operation is assumed to have started at block 4041168 and ended at 4046151 (Please verify).
-
-
-
-
-
-
-
 
