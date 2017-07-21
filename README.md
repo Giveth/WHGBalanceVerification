@@ -10,7 +10,7 @@ On the 19th of July the White Hat Group rescued various multisig contracts deplo
 
 We aim to do this as safely as possible and as quickly as possible. Therefore, we are submitting the 3 csv files (`multisig_rescue_wallets_filtered.csv`, `multisig_rescue_ether.csv`, and `multisig_rescue_tokens.csv`) that contain the data needed to achieve this task for community review. These files will be used directly for the deployment of the new multisig contracts and the transactions that will fill them.
 
-This deployment will be simulated on the Test Net tonight (July 21st).
+This deployment will be simulated on the Test Net tomorrow morning (July 22nd).
 
 When we are satisfied with the security & accuracy of `multisig_rescue_wallets_filtered.csv`and our deployment scripts, and the chosen multisig wallet implementation has been finalized by Parity, we will deploy the replacement multisig wallets to the Main Net and generate the `newWallets.csv` file linking the old vulnerable wallet addresses to the new replacement wallet addresses for community review before sending all of the tokens and ether to the newly generated wallets.
 
