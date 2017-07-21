@@ -66,10 +66,10 @@ Sorted by `tokenAddress` (all characters should be lowercase) and then by `walle
 
 # Helping
 
-We are excited to compare our results against yours.
+We are excited to compare our results against YOURS.
 
-Please create a new folder for each implementation. 
+Please create a new folder for your implementation. 
 
 The operation is assumed to have started at block 4041168 and ended at 4046151 (Please verify).
 
-We have already recived a community contribution from Bokkypoobah which lives in the ./BokkyPoobah directory. This closely matches the ./jbaylina with a few intersting differences. 
+We have already recived a community contribution from Bokkypoobah which lives in the ./BokkyPoobah directory. This closely matches the ./jbaylina with a few intersting differences. @rodney757 verified BokkyPoobah's data to produce `multisig_rescue_wallets_filtered.csv` see his README.md in ./rodney757 . @Lefterisjp included an independent analysis which is currently underway. Please see his README.md in ./lefteris. 
