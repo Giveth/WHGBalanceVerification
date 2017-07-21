@@ -15,7 +15,7 @@ var onlyCreatedWallets = ['0x9a84d2eb7f82a98399dff45c7bb13b7654fa95a6','0x9bf10b
 // Block
 // Tx
 
-var block = 4041168;
+var block = 4044813;
 
 wallets = wallets.sort();
 
