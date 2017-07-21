@@ -32,7 +32,7 @@ Sorted by amount and then the wallet with the 0 amounts omitted.
 
 `tokenAddress, tokenSymbol, wallet, amount, cumulativeAmount`
 
-Sorted by token address and then the wallet with the 0 amounts omitted.
+Sorted by token address (all characters should be lowercase) and then the wallet with the 0 amounts omitted.
 
 
 
