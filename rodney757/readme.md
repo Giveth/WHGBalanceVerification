@@ -26,3 +26,10 @@ and [`tokens.csv`](https://github.com/Giveth/WHGBalanceVerification/blob/master/
 `:%s/]$//g`
 
 manually remove python appended `L` suffix from `dayLimit` values where needed
+
+### discrepancy note
+
+There is 1 additional address found in jbaylina's data that mine does not include. This was a contract that was created in the middle of the rescue. My script fetched contract
+data from before the attack. jbaylina manually handled the special case of this address in his script. The address is `0xdf86984226814e2970ea94fedd9676276fedfacb`
+
+
