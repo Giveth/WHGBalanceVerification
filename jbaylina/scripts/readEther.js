@@ -15,6 +15,7 @@ wallets = wallets.sort();
 
 
 function run() {
+    console.log("Wallet,Amount,CumulativeAmount");
     var result = [];
     var totalAcc = new BigNumber(0);
     for (var i=0; i<wallets.length; i++) {

@@ -19,8 +19,7 @@ tokens = tokens.sort(function(a,b) { return a.address > b.address ? 1 : -1});
 
 
 function run() {
-    console.log("TokenAddr,TokenSymbol, Wallet,Amount,CumulativeAmount");
-
+    console.log("TokenAddr,TokenSymbol,Wallet,Amount,CumulativeAmount");
 
     result = {};
 
