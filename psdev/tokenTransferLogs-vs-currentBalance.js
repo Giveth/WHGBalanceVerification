@@ -44,7 +44,6 @@ filter.get(function(error, logs){
             token: log.address,
             from: topic2Address(log.topics[1]),
             to: topic2Address(log.topics[2]),
-            // amount: log.data
             amount:  new BigNumber(log.data.substring(2), 16)
         }
         transfers.push(transfer);
@@ -56,10 +55,9 @@ filter.get(function(error, logs){
     transfers.forEach((transfer) => {
         if (whgTokenBalances[transfer.token] == undefined) {
             whgTokenBalances[transfer.token] = new BigNumber(0);
-            // whgTokenBalances[transfer.token] = web3.toDecimal(0x0);
         }
-        // whgTokenBalances[transfer.token] = whgTokenBalances[transfer.token] + web3.toDecimal(transfer.amount);
         whgTokenBalances[transfer.token] = whgTokenBalances[transfer.token].add(transfer.amount);
+        console.log("\"" + transfer.token + "\",\"" + transfer.from + "\"," + transfer.amount.toFixed() + "," + whgTokenBalances[transfer.token].toFixed());
     });
 
     // compare transfers with current balance
@@ -71,15 +69,12 @@ filter.get(function(error, logs){
 
         var balanceDiffBeforeHack = currentBalance.minus(preBalance);
 
-        // var balance = web3.toDecimal(web3.fromDecimal(balanceDiffBeforeHack));
-
         if (!balanceDiffBeforeHack.equals(sumTransfers)) {
             var diffExpected = sumTransfers.minus(balanceDiffBeforeHack);
             anomalies++;
             console.log("");
             console.log("token=" + tokenAddress);
             console.log("           sumTransfers=" + sumTransfers);
-//            console.log("                balance=" + balance);
             console.log("           diffExpected=" + diffExpected);
             console.log("  balanceDiffBeforeHack=" + balanceDiffBeforeHack.toFixed());
             console.log("         currentBalance=" + currentBalance.toFixed());
@@ -90,16 +85,5 @@ filter.get(function(error, logs){
     // console.log("transferCount=" + transfers.length);
     // console.log("   tokenCount=" + Object.keys(whgTokenBalances).length);
     // console.log("    anomalies=" + anomalies);
-
-    //output file matching jordi's but without TokenSymbol
-    transfers.forEach((transfer) => {
-        if (whgTokenBalances[transfer.token] == undefined) {
-            whgTokenBalances[transfer.token] = new BigNumber(0);
-        }
-
-        whgTokenBalances[transfer.token] = whgTokenBalances[transfer.token].add(transfer.amount);
-
-        console.log("\"" + transfer.token + "\",\"" + transfer.from + "\"," + transfer.amount.toFixed() + "," + whgTokenBalances[transfer.token].toFixed());
-    });
 
 });
