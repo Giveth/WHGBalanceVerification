@@ -32,15 +32,22 @@ Sorted by `oldWallet`; `[owners]` should be a string but formatted as a javascri
 
 
 
-## `newWallets.csv` (to be generated after deployment to Main Net)
+## `walletMapping.csv`  (to be generated after deployment to Main Net)
 
 Upon verifying `multisig_rescue_oldwallets_jordi.csv`, and confirming the code for the new multisig contracts with Parity, we will deploy the new wallets and create `newWallets.csv` with 
 
-`oldWallet`, `newWallet`
+`oldWallet`, `newWallet` Sorted by ‘oldWallet’
 
-Sorted by ‘oldWallet’
+These new wallets have the exact same `oldWallet`, `[owners]`, `required`, `day_limit`
 
 This will also need to be verified by the community. 
+
+
+Two vulnerable multisigs had vulnerable multisigs listed as an `owner`. 
+
+For ‘0x6dbb825564e85925b0414fdbd41f764ec475c59b’ we manually excluded it from the automatic deployment and replaced the vulnerable multisig’s address with its corresponding replacement multisig.
+
+The other exception, ‘0xccfa829f12bd1b7618702ace114a0e464f311f6e’, was a very curious case indeed. This vulnerable multisig, has `_required == 1` and has two “owners” one being ‘0x00b159a054b4b6871ecb6c3a5ca080837953e5a4’ and the other being the multisig itself… 
 
 
 
@@ -61,7 +68,6 @@ This file lists the tokens that are assumed to have been rescued from each walle
 `tokenAddress, tokenSymbol, wallet, amount, cumulativeAmount`
 
 Sorted by `tokenAddress` (all characters should be lowercase) and then by `wallet` with `amount == 0` omitted; `amount` and `cumulativeAmount` are listed in the lowest unit of the token.
-
 
 
 # Helping
