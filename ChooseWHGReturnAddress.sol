@@ -23,7 +23,7 @@ contract ChooseWHGReturnAddress {
     /// @notice This function is used to choose an address for returning the funds.
     ///  This function can only be called once, PLEASE READ THE NOTE ABOVE.
     /// @param _returnAddr The address that will receive the recued funds
-    function requestReturn(address _returnAddr) external {
+    function requestReturn(address _returnAddr) external returns (bool) {
 
         // After the end date, the newly deployed parity multisig will be
         //  chosen if no transaction is made.
@@ -32,6 +32,8 @@ contract ChooseWHGReturnAddress {
         require(returnAddresses[msg.sender] == 0x0);
         returnAddresses[msg.sender] = _returnAddr;
         ReturnRequested(msg.sender, _returnAddr);
+        
+        return true;
     }
 
     event ReturnRequested(address indexed origin, address indexed returnAddress);
