@@ -23,3 +23,21 @@ exports.load = (file, cb) => {
     cb(null, records);
   });
 };
+
+
+exports.save = (file, objs, cb) => {
+    const lines = [];
+    let i;
+    let j;
+    const fields = Object.keys(objs[ 0 ]);
+    lines.push(fields.join(","));
+    for (i = 0; i < objs.length; i += 1) {
+        const record = [];
+        for (j = 0; j < fields.length; j += 1) {
+            record.push(objs[ i ][ fields[ j ] ]);
+        }
+        lines.push(record.join(","));
+    }
+    const out = lines.join("\n");
+    fs.writeFile(file, out, 'utf8', cb);
+};
