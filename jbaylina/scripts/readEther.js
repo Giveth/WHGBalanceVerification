@@ -1,6 +1,14 @@
 
+// Jordi
+//var accounts = ['0x1DBA1131000664b884A1Ba238464159892252D3a'];
 
-var account = '0x1DBA1131000664b884A1Ba238464159892252D3a';
+// oleksii
+// var account = ;
+var accounts = [ '0xd1f27c48b948d49f3d098f499b8a1830d8a7e229', '0x1ff21eca1c3ba96ed53783ab9c92ffbf77862584' ];
+
+for (let i=0; i<accounts; i+=1) {
+    accounts[i] = accounts[i].toLowerCase();
+}
 
 var startBlock = 4044480;
 var toBlock = 4047480;
@@ -15,7 +23,7 @@ wallets = wallets.sort();
 
 
 function run() {
-    console.log("Wallet,Amount,CumulativeAmount");
+    console.log("oldWallet,amount,cumulativeAmount");
     var result = [];
     var totalAcc = new BigNumber(0);
     for (var i=0; i<wallets.length; i++) {
@@ -26,7 +34,7 @@ function run() {
             var e = sends[j];
             var addr = "0x" + e.data.substring(13*2,(13+20)*2);
             var amount = new BigNumber(e.data.substring((13+20)*2, (13+20+32)*2), 16);
-            if ( addr.toLowerCase() === account.toLowerCase() ) {
+            if ( accounts.indexOf(addr.toLowerCase()) >= 0 ) {
                 acc = acc.add(amount);
             }
         }

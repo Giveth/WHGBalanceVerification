@@ -1,5 +1,15 @@
 
-var account = '0x1DBA1131000664b884A1Ba238464159892252D3a';
+// Jordi
+//var accounts = ['0x1DBA1131000664b884A1Ba238464159892252D3a'];
+
+// oleksii
+// var account = '0x1ff21eca1c3ba96ed53783ab9c92ffbf77862584';
+var accounts = [ '0xd1f27c48b948d49f3d098f499b8a1830d8a7e229', '0x1ff21eca1c3ba96ed53783ab9c92ffbf77862584' ];
+
+for (let i=0; i<accounts; i+=1) {
+    accounts[i] = accounts[i].toLowerCase();
+}
+
 
 var startBlock = 4044480;
 var toBlock = 4047480;
@@ -19,7 +29,7 @@ tokens = tokens.sort(function(a,b) { return a.address > b.address ? 1 : -1});
 
 
 function run() {
-    console.log("TokenAddr,TokenSymbol,Wallet,Amount,CumulativeAmount");
+    console.log("tokenAddr,tokenSymbol,oldWallet,amount,cumulativeAmount");
 
     result = {};
 
@@ -37,7 +47,7 @@ function run() {
             var toAddr = "0x" + e.topics[2].substring(26).toLowerCase();
             var amount = new BigNumber(e.data.substring(2), 16);
 
-            if ( toAddr.toLowerCase() === account.toLowerCase() ) {
+            if ( accounts.indexOf( toAddr.toLowerCase()) >= 0 ) {
                 if (! tokenBalances[fromAddr]) {
                     tokenBalances[fromAddr] = new BigNumber(0);
                 }
