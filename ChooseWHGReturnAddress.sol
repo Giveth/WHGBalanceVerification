@@ -26,7 +26,7 @@ contract Owned {
 
 contract ChooseWHGReturnAddress is Owned {
 
-    mapping (address => address) returnAddresses;
+    mapping (address => address) public returnAddresses;
     uint public endDate;
 
     /// @param _endDate After this time, if `requestReturn()` has not been called
@@ -47,7 +47,7 @@ contract ChooseWHGReturnAddress is Owned {
     /// @notice This function is used to choose an address for returning the funds.
     ///  This function can only be called once, PLEASE READ THE NOTE ABOVE.
     /// @param _returnAddr The address that will receive the recued funds
-    function requestReturn(address _returnAddr) {
+    function requestReturn(address _returnAddr) external returns (bool) {
 
         // After the end date, the newly deployed parity multisig will be
         //  chosen if no transaction is made.
@@ -56,21 +56,8 @@ contract ChooseWHGReturnAddress is Owned {
         require(returnAddresses[msg.sender] == 0x0);
         returnAddresses[msg.sender] = _returnAddr;
         ReturnRequested(msg.sender, _returnAddr);
-    }
-    /// @notice This is a simple getter function that will be used to return the
-    ///  address that the WHG will return the funds to
-    /// @param _addr The address of the newly deployed parity multisig
-    /// @return address The chosen address that the funds will be returned to
-    function getReturnAddress(address _addr) constant returns (address) {
-        if (returnAddresses[_addr] == 0x0) {
-            return _addr;
-        } else {
-            return returnAddresses[_addr];
-        }
-    }
-
-    function isReturnRequested(address _addr) constant returns (bool) {
-        return returnAddresses[_addr] != 0x0;
+        
+        return true;
     }
 
     event ReturnRequested(address indexed origin, address indexed returnAddress);
